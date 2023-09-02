@@ -1,80 +1,17 @@
 <?php  
-include('templates/header.php');
-
-$xml=simplexml_load_file("languages_link.xml") or die("xml not found!");
-$LINK1 =$xml->LINK1->$lang;
-$LINK2 =$xml->LINK2->$lang;
-$LINK3 =$xml->LINK3->$lang;
-$LINK4 =$xml->LINK4->$lang;
-$LINK5 =$xml->LINK5->$lang;
-$LINK6 =$xml->LINK6->$lang;
-$LINK7 =$xml->LINK7->$lang;
-$LINK8 =$xml->LINK8->$lang;
-$LINK9 =$xml->LINK9->$lang;
-$LINK10 =$xml->LINK10->$lang;
+include('templates/header.php'); /* this includes the <html> etc tags to produce a full fledged html page */
 ?>
-<br>
-<br>
-<br>
-<h1><?php echo $LINK1;?></h1>
-<p><?php echo $LINK2;?></p>
-<p><?php echo $LINK10;?></p>
 
 <?php
-$baseUrl = "https://docs.google.com/spreadsheets/d/1yN7Tv3HfqysV1RmTilGLAr_XbLOX0RvxXWg9Qp0xDiY/edit#gid=";
+$baseUrl = "https://docs.google.com/spreadsheets/d/4yN7Tv3rhgftV1RmTilGLAr_XbLOX0RvxXdX9Qp0xDiY/edit#gid=";
 $URLadd=array(
-array( "boat",  623026690), 
-array( "youtube", 2049887714), 
-array( "htm_php_javascript",  1570913856),
-array( "python",  611085655),
-array( "copper_volt",  682764670),
-array( "microscope",  483217967),
-
-array( "tech",  472814277),
-array( "radio",  317225087),
-array( "psycho",  1875986652),
-array( "proverb",  533060598), 
-array( "orienteering",  880755047),
-array( "medicine",  2039276264),
-
-
-array( "math",  250559957),
-array( "map",  243335710),
-array( "complete_nonsense",  1867695680),
-array( "Lithium-akku",  794464901),
-array( "fun_fact",  811855782),
-array( "local_hyvinkaa",  854648742),
-array( "france",  840094145),
-array( "finland",  757672958),
-array( "fake_info",  1563959389),
-array( "economic",  1411689780),
-
-
-array( "bonds-search",  1146143246),
-array( "etf",  894039462),
-array( "data_utility",  1686167580),
-array( "data",  1684395169),
-array( "cad",  1015926831),
-array( "bike_light",  96194712),
-array( "practical_use_everyday",  2051215492),
-array( "artificial_intelligence",  1420546638),
-array( "hobby",  530921691),
-array( "locomotives",  2099155071),
-
-
-array( "Dog",  1839038105),
-array( "Car",  1954920852),
-array( "Music",  2122705550),
-array( "Computer",  1271834135),
-array( "Finnfilm",  970429745),
-array( "kotiseudut",  1587438169),
-array( "electric",  1543694625),
-array( "arduino_esp32",  1541727903),
-array( "diy_circuits",  743743408),
-array( "php",  378131120),
-
-
-array( "electronicshops",  207026233 )
+array( "flowers",  520220942), 
+array( "dogs", 968862282), 
+array( "cats",  321764715),
+array( "horses",  421310246),
+array( "sheeps",  893876543),
+array( "fish",  316217936),
+array( "cows",  152541272 )
 );
 $keys=array_keys($URLadd);
 for ($i=0;$i<count($URLadd);$i++)
@@ -247,10 +184,9 @@ $(document).ready(function () {
   }); 
 </script>";
 
-include('templates/footer.php');
-/*echo '    
+echo '    
   </body>
 </html>
 ';
-*/
+
 ?>
