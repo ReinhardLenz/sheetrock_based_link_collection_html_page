@@ -1,0 +1,256 @@
+<?php  
+include('templates/header.php');
+
+$xml=simplexml_load_file("languages_link.xml") or die("xml not found!");
+$LINK1 =$xml->LINK1->$lang;
+$LINK2 =$xml->LINK2->$lang;
+$LINK3 =$xml->LINK3->$lang;
+$LINK4 =$xml->LINK4->$lang;
+$LINK5 =$xml->LINK5->$lang;
+$LINK6 =$xml->LINK6->$lang;
+$LINK7 =$xml->LINK7->$lang;
+$LINK8 =$xml->LINK8->$lang;
+$LINK9 =$xml->LINK9->$lang;
+$LINK10 =$xml->LINK10->$lang;
+?>
+<br>
+<br>
+<br>
+<h1><?php echo $LINK1;?></h1>
+<p><?php echo $LINK2;?></p>
+<p><?php echo $LINK10;?></p>
+
+<?php
+$baseUrl = "https://docs.google.com/spreadsheets/d/1yN7Tv3HfqysV1RmTilGLAr_XbLOX0RvxXWg9Qp0xDiY/edit#gid=";
+$URLadd=array(
+array( "boat",  623026690), 
+array( "youtube", 2049887714), 
+array( "htm_php_javascript",  1570913856),
+array( "python",  611085655),
+array( "copper_volt",  682764670),
+array( "microscope",  483217967),
+
+array( "tech",  472814277),
+array( "radio",  317225087),
+array( "psycho",  1875986652),
+array( "proverb",  533060598), 
+array( "orienteering",  880755047),
+array( "medicine",  2039276264),
+
+
+array( "math",  250559957),
+array( "map",  243335710),
+array( "complete_nonsense",  1867695680),
+array( "Lithium-akku",  794464901),
+array( "fun_fact",  811855782),
+array( "local_hyvinkaa",  854648742),
+array( "france",  840094145),
+array( "finland",  757672958),
+array( "fake_info",  1563959389),
+array( "economic",  1411689780),
+
+
+array( "bonds-search",  1146143246),
+array( "etf",  894039462),
+array( "data_utility",  1686167580),
+array( "data",  1684395169),
+array( "cad",  1015926831),
+array( "bike_light",  96194712),
+array( "practical_use_everyday",  2051215492),
+array( "artificial_intelligence",  1420546638),
+array( "hobby",  530921691),
+array( "locomotives",  2099155071),
+
+
+array( "Dog",  1839038105),
+array( "Car",  1954920852),
+array( "Music",  2122705550),
+array( "Computer",  1271834135),
+array( "Finnfilm",  970429745),
+array( "kotiseudut",  1587438169),
+array( "electric",  1543694625),
+array( "arduino_esp32",  1541727903),
+array( "diy_circuits",  743743408),
+array( "php",  378131120),
+
+
+array( "electronicshops",  207026233 )
+);
+$keys=array_keys($URLadd);
+for ($i=0;$i<count($URLadd);$i++)
+  {
+    foreach ($URLadd[$keys[$i]] as $key => $value)
+    {
+      $fullURLaddress[$i][1]=$baseUrl.$URLadd[$i][1];
+      $Name_prefix[$i]= "#" . $URLadd[$i][0];
+    }
+    }
+
+
+$ALK=count($URLadd);
+$columns=3;
+$RowNumbers=floor($ALK/$columns);
+$OneMore=$RowNumbers+1;
+$Modulo=$ALK%$columns;
+
+
+$counter=0;
+echo '
+<html>
+  <body>';
+
+
+
+  echo '
+    <table class="detail"  style="table-layout:fixed" cellspacing=1 cellpadding=2 width="100%" border="1">
+
+<!--    <thead>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+        </tr>
+      </thead>   -->
+      <tbody>
+'; 
+
+for ($i = 0; $i<$RowNumbers; $i+=1){
+    echo '
+      <tr
+          class="parent"
+          id="row' . $i . '"
+          title="Click to expand/collapse"
+          style="cursor: pointer"
+        >
+          <td vertical-align ="top" >'.$URLadd[$counter][0] .'_ _ </td>
+          <td vertical-align ="top"  >'.$URLadd[$counter+1][0] .'_  </td>
+          <td vertical-align ="top"   >'.$URLadd[$counter+2][0] .'_  </td>
+        </tr>
+    '; 
+
+   
+        echo '
+            <tr class="child-row'. $i .' " style="display: none">';
+
+            for ($j = 0; $j<3; $j+=1){
+                echo'<td valign ="top" ><div id="container_link'.$counter .'">x</div></td>';
+                $counter+=1;
+            }
+         echo'</tr>';
+        
+    }
+
+    echo '
+    <tr
+      class="parent"
+      id="row' . $OneMore . '"
+      title="Click to expand/collapse"
+      style="cursor: pointer"
+    >';
+    for ($j = 0; $j<$Modulo; $j+=1){
+        $b=($RowNumbers)*3+$j;
+        echo '<td>'.$URLadd[$b][0] .' </td>';
+        }
+    echo'</tr>';
+    
+
+echo '
+<tr class="child-row'. $OneMore .' " style="display: none">';
+
+for ($j = 0; $j<$Modulo; $j+=1){
+    echo'<td><div id="container_link'.$counter .'">x</div></td>';
+    $counter+=1;
+    }
+echo'</tr>';
+
+
+echo '
+      </tbody>
+    </table><br><br><br>';
+
+
+
+
+echo '
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+';
+$j=1;
+
+/*echo $URLadd[$j][0].'<br>';
+echo $Name_prefix[$j].'<br>';
+echo $URLadd[$j][1].'<br>';
+echo ($fullURLaddress[$j][1]);*/
+echo'
+<script>
+var Url_sheet_number = new Array();
+var Url_sheet = new Array();
+var Name_prefix = new Array();
+var html = new Array();
+';
+
+for ($j=0;$j<count($URLadd);$j++)
+    {
+        echo'
+        Url_sheet_number['.$j.'] = "'.$URLadd[$j][0].'";
+        Url_sheet['.$j.'] = "'.$fullURLaddress[$j][1].'";
+        Name_prefix['.$j.'] = "'.$Name_prefix[$j].'";';
+    }
+
+    for ($j=0;$j<count($URLadd);$j++)
+        {echo'
+        window.addEventListener("load", function () {';
+        echo'
+            html['.$j.'] =
+            \'<div id="container_link'.$j.'"><ol id="\' +
+            Url_sheet_number['.$j.'] +
+            \'" class="list">\' +
+            \'<script id="compileMe" type="text/x-handlebars-template"\' +
+            \'><li><a href="{{ cells.address }}">{{ cells.title }}</a>\' +
+            "</li>" +
+            \'</scr"+"ipt></ol></div>\';
+            document.getElementById("container_link'.$j.'").innerHTML = html['.$j.'];
+            var Template = Handlebars.compile($("#compileMe").html());
+            $(Name_prefix['.$j.']).sheetrock({
+            url: Url_sheet['.$j.'],
+            labels: ["title", "address", "theme"],
+            rowTemplate: Template,
+            callback: function (error, options, response) {
+                var options = {
+                valueNames: ["title", "address", "theme"],
+                };
+                var userList = new List("x", options);
+            },
+            });';
+echo'
+        });';}
+echo'
+        </script>
+    ';
+echo " <script type='text/javascript'>
+  
+$(document).ready(function () {
+    $('tr.parent')
+      .css('cursor', 'pointer')
+      .attr('title', 'Click to expand/collapse')
+      .click(function () {
+        $(this)
+          .siblings('.child-' + this.id)
+          .toggle();
+      });
+     $('tr[@class^=child-]').hide().children('td');  
+  }); 
+</script>";
+
+include('templates/footer.php');
+/*echo '    
+  </body>
+</html>
+';
+*/
+?>
