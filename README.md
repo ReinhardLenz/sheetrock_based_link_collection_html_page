@@ -69,7 +69,7 @@ You can quickly update outdated links or add new ones on the fly.
 
 Google search results are inconsistent over time; this system helps preserve good resources before they vanish.
 
-📸 Screenshot (optional)
+📸 Screenshot
 <img width="1385" height="149" alt="image" src="https://github.com/user-attachments/assets/9e702683-f019-4800-8df1-9d677737c2cf" />
 
 
