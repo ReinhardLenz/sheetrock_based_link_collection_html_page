@@ -1,23 +1,85 @@
-# sheetrock_based_link_collection_html_page
-Page to collect publicly links, links are administrated via gmail googlesheets account. This is more flexible as links get dusty, new links should be quickly added, and a theme directory for keeping links in order. The connection between html page and gmail account is thought sheetrock routine. The link directory is shown as a collapsible table with three columns. By clicking on a theme, the respective theme opens up and shows the links of the theme. A new theme can be added simply by adding a new table in the gmail googlesheet table, the tab on the lower edge of the google isheet is given a name like "poetry", and a new "gid number" is created on the googlesheet. (the last 9 digits in the browser input bar.)
-In the googlesheets, the address bar looks something like this:
+📚 Sheetrock-Based Link Collection HTML Page
+A lightweight and flexible HTML+PHP-based system to maintain and display categorized web link collections using a Google Sheets backend and the Sheetrock.js library.
+
+🔧 Features
+Links are managed via Google Sheets using a Gmail account.
+
+Frontend uses Sheetrock.js to fetch and display data from Google Sheets.
+
+Links are organized by theme, shown as a collapsible table with three columns.
+
+Easily update, add, or remove links without touching the code—just update your spreadsheet.
+
+No database required. Everything is live from Google Sheets.
+
+📁 Structure
+Each theme (or category) is a separate tab (worksheet) in a single Google Sheets document. Each worksheet contains:
+
+Column A (1st)	Column B (2nd)
+Link Text	URL
+
+You can also add more data (e.g., notes or tags) in extra columns if needed for styling or metadata.
+
+🧠 How It Works
+Create a Google Sheet with multiple tabs—one for each link category (e.g., poetry, electronics, recipes, etc.).
+
+Share the sheet with "View access to everyone" (read-only).
+
+Use the gid number of each tab (found in the URL after #gid=) to connect it with your PHP/HTML frontend.
+
+Example URL:
+
+bash
+Copier
+Modifier
 https://docs.google.com/spreadsheets/d/6yN7Tv2HfqysV9RmTilGLAr_XaKOX2RvxXWg9Qp5xDiY/edit#gid=123456789
+The number 123456789 is the gid for the respective tab.
 
-gid=123456789
-gid number  is taken down
+In your PHP config, define the themes as an array:
 
-Inside the googlesheet the table is structured with first colum as the link text, and the second column as the link <a> tag content itself.
-![Capture](https://github.com/ReinhardLenz/sheetrock_based_link_collection_html_page/assets/71219487/2dd97339-898b-443a-9bf0-5ffffcd9a1c5)
+php
+Copier
+Modifier
+$themes = array(
+    array("poetry", 123456789),
+    array("electronics", 987654321),
+    ...
+);
+When the page is loaded, each theme is shown as a collapsible row. Clicking it reveals the list of links under that theme.
 
- added to the php file a new row like this
-...
-array( "poetry",  123456789),
-...
+🔗 Dependencies
+Sheetrock.js by Chris Zarate
+Sheetrock is used to fetch public Google Sheets data via JavaScript.
 
-Link to the sheetrock repository, which is neede for understanding how to give viewing rights and how to create the googlesheet table. You have to give viewing right to everybody (but only you can modify, of course, because you have the gmail account password)
+🔐 Permissions
+You must make the Google Sheet publicly viewable for Sheetrock to access it.
 
-https://chriszarate.github.io/sheetrock/
+Only the account owner (you) can edit it.
 
-https://github.com/chriszarate/sheetrock
+No authentication or login is required on the frontend.
 
-My motivation is that Browser bookmarks are not easy to keep structured, moreover, I use several browsers. I have no idea, how to extract and transfer bookmarks from one place to another. But still, I think bookmarks are quite important. The google search with the same words of today may lead to completely different result then the google search of tomorrow with exact the same words. 
+💡 Motivation
+Browser bookmarks are clunky and hard to sync across browsers or devices. Plus, bookmarks don't scale well or allow flexible categorization. With this system:
+
+You can manage all your bookmarks in a single Google Sheet.
+
+They’re accessible from any browser and device.
+
+You can quickly update outdated links or add new ones on the fly.
+
+Google search results are inconsistent over time; this system helps preserve good resources before they vanish.
+
+📸 Screenshot (optional)
+You could add a screenshot or demo GIF here to show how the collapsible table works.
+
+🚀 Getting Started
+Clone or download this repository.
+
+Set up your Google Sheet with appropriate tabs and links.
+
+Configure your PHP file with the correct gids.
+
+Upload everything to your web server (e.g., Apache or Kapsi.fi).
+
+Done! Open the page and start organizing.
+
