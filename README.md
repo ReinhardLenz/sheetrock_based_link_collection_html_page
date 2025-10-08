@@ -84,3 +84,5 @@ Upload everything to your web server (e.g., Apache or Kapsi.fi).
 
 Done! Open the page and start organizing.
 
+
+![Visitor Count](https://komarev.com/ghpvc/?username=ReinhardLenz&repo=sheetrock_based_link_collection_html_page&color=green)
